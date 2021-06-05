@@ -1,4 +1,76 @@
-.example-spacer {
-    flex: 1 1 auto;
-  }
+
   
+
+  $bgcolor: #000000 !important;
+$logotextcolor: #ca0000;
+$logofontsize: 24px;
+
+
+.toolBar{
+    background-color: $bgcolor;
+    box-shadow: black;
+    box-shadow: 4px 4px 4px #E7E7E7;
+    height: 70px;
+  }
+
+.txt{
+    color:$logotextcolor ;
+    font-size: $logofontsize;
+}
+  .space{
+        flex: 1 1 auto;
+      }
+      
+  .Registrieren{
+      padding: 10px;
+      margin: 5px;
+      background-color: #ed1c24;
+      color: white;
+      border-color: #ed1c24;
+      border-radius: 5px;
+      cursor: pointer;
+
+  }
+  .Anmelden{
+    padding: 10px;
+    margin: 5px;
+    background-color:transparent;
+    border-color: #000000;
+    color: white;
+    cursor: pointer;
+
+}
+
+.input-container {
+  display: -ms-flexbox; 
+  display: flex;
+  margin: 5px;
+
+  // width: 100%;
+  // transform: translate(0px,-20px) !important;
+}
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  // height: 40px !important;
+    /* border-radius: 20px; */
+border:  1px solid rgb(255, 255, 255);
+background-color: white;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+
+}
+
+.eye1{
+  padding: 5px;
+  color: black;
+  width: 14px;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: white;
+  // height: 40px !important;
+
+}

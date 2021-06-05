@@ -8,7 +8,9 @@ import { HomeComponent } from '../app/Home/home.component';
 import { HeaderComponent } from './Layout/header/header.component';
 import { SideBarComponent } from './Layout/side-bar/side-bar.component';
 import { FooterComponent } from './Layout/footer/footer.component';
-import { MaterialModule } from './material/material.module'
+import { MaterialModule } from './material/material.module';
+import { HorizontalScrollMenuModule } from 'ngx-horizontal-scroll-menu';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { MaterialModule } from './material/material.module'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HorizontalScrollMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
