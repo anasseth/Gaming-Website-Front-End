@@ -22,7 +22,7 @@ $logofontsize: 24px;
       }
       
   .Registrieren{
-      padding: 5px;
+      // padding: 5px;
       margin: 5px;
       background-color: #ed1c24;
       color: white;
@@ -32,7 +32,7 @@ $logofontsize: 24px;
 
   }
   .Anmelden{
-    padding: 5px;
+    // padding: 5px;
     margin: 5px;
     background-color:transparent;
     border-color: #000000;
@@ -74,3 +74,35 @@ border-bottom-right-radius: 5px;
   // height: 40px !important;
 
 }
+
+
+mat-grid-tile {
+  background: rgb(255, 255, 255);
+}
+
+.btn-group button {
+  // background-color: #000000; /* Green background */
+  // border: 1px solid rgb(0, 0, 0); /* Green border */
+  color: white; /* White text */
+  // padding: 5px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  // width: 20%; /* Set a width if needed */
+  display: block; /* Make the buttons appear below each other */
+}
+
+.btn-group button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #000000;
+}
+
+.mine{
+  position: fixed;
+    bottom: 20px;
+    right: 10px;
+    background-color: red;
+}
+

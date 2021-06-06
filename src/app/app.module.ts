@@ -11,7 +11,7 @@ import { FooterComponent } from './Layout/footer/footer.component';
 import { MaterialModule } from './material/material.module';
 import { HorizontalScrollMenuModule } from 'ngx-horizontal-scroll-menu';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
-// import { MatGridListModule } from '@angular/material/grid-list/grid-list-module';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     MaterialModule,
     HorizontalScrollMenuModule,
     IvyCarouselModule,
-    // MatGridListModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

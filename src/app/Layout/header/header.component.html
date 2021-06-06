@@ -6,34 +6,85 @@
     <i class="material-icons eye1" matprefix>search</i>
     <input class="input-field " type="text" placeholder="Search" type="text">
   </div>
-  <button class="Registrieren " title="Registrieren">
-    <!-- Registrieren -->
+  <div class="btn-group">
+    <button class="Registrieren " title="Registrieren">
+      <mat-icon>person</mat-icon>
+    </button>
+    <button class="Anmelden" title="Anmelden">
+      <mat-icon>input</mat-icon>
+    </button>
+  </div>
+  <!-- <button class="Registrieren " title="Registrieren">
     <mat-icon>person</mat-icon>
 
   </button>
   <button class="Anmelden" title="Anmelden">
-    <!-- Anmelden -->
     <mat-icon>input</mat-icon>
-  </button>
+  </button> -->
 </mat-toolbar>
 
 <div>
-  <ngx-horizontal-scroll-menu [background]="background" [linkLabel]="'link'" [text]="text" [distance]="distance">
+  <ngx-horizontal-scroll-menu [background]="background" [items]="items" [linkLabel]="'link'" [text]="text" [distance]="distance">
   </ngx-horizontal-scroll-menu>
 
 </div>
 
 <div style="padding-top: 1%;">
-  <ngx-horizontal-scroll-menu [background]="background1" [linkLabel]="'link'" [text]="text1" [distance]="distance">
+  <ngx-horizontal-scroll-menu [background]="background1" [items]="items1" [linkLabel]="'link'" [text]="text1" [distance]="distance">
   </ngx-horizontal-scroll-menu>
 
 </div>
 
 
-<carousel [images]="images" [objectFit]="'cover'" [height]="300" [cellWidth]="'100%'" [autoplay]="true" [dots]="true" >
+<carousel [images]="images" [objectFit]="'cover'" [height]="300" [cellWidth]="'100%'" [autoplay]="true" [dots]="true">
 
   <!-- <img src="/assets/images/img1.jpg">
   <img src="/assets/images/img2.jpg">
   <img src="/assets/images/img3.jpg"> -->
 
 </carousel>
+
+<div style="padding: 10px;"></div>
+<mat-grid-list [cols]="breakpoint" rowHeight="200" (window:resize)="onResize($event)" gutterSize="5px">
+  <mat-grid-tile>
+    <img src="/assets/images/img4.png" height="100%">
+
+  </mat-grid-tile>
+  <mat-grid-tile> <img src="/assets/images/img3.jpg" height="100%" width="100%">
+  </mat-grid-tile>
+  <mat-grid-tile><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
+  <mat-grid-tile>
+    <img src="/assets/images/img4.png" height="100%">
+
+  </mat-grid-tile>
+  <mat-grid-tile> <img src="/assets/images/img3.jpg" height="100%" width="100%">
+  </mat-grid-tile>
+  <mat-grid-tile><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
+  <mat-grid-tile>
+    <img src="/assets/images/img4.png" height="100%">
+
+  </mat-grid-tile>
+  <mat-grid-tile> <img src="/assets/images/img3.jpg" height="100%" width="100%">
+  </mat-grid-tile>
+  <mat-grid-tile><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
+
+  <mat-grid-tile>
+    <img src="/assets/images/img4.png" height="100%">
+
+  </mat-grid-tile>
+  <mat-grid-tile> <img src="/assets/images/img3.jpg" height="100%" width="100%">
+  </mat-grid-tile>
+  <mat-grid-tile><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
+  <mat-grid-tile>
+    <img src="/assets/images/img4.png" height="100%">
+
+  </mat-grid-tile>
+  <mat-grid-tile> <img src="/assets/images/img3.jpg" height="100%" width="100%">
+  </mat-grid-tile>
+
+
+</mat-grid-list>
+
+<button class="mine" mat-fab  title="My favaorate game" >
+  <mat-icon style="color: yellow;">star</mat-icon>
+</button>

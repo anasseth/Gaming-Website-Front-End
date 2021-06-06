@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  breakpoint: any;
+
   background = 'background';
   text = 'text-style';
   background1 = 'background1';
@@ -23,17 +25,42 @@ export class HeaderComponent implements OnInit {
 
   ]
   ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 420) ? 1 : 7;
+
   }
+
+  onResize(event: any) {
+    this.breakpoint = (event.target.innerWidth <= 420) ? 1 : 7;
+  }
+
+
   title = 'horizontal-menu-test';
   link = 'link';
   items: any[] = [
-    { title: 'Orangies', link: '' },
-    { title: 'Orangies', link: '' },
-    { title: 'Orangies', link: '' },
-    { title: 'Orangies', link: '' },
-    { title: 'Orangies', link: '' },
-    { title: 'Orangies', link: '' },
+    { title: 'Videoslots', link: '' },
+    { title: 'Videopoker', link: '' },
+    { title: 'Videoslots', link: '' },
+    { title: 'Videopoker', link: '' },
+    { title: 'Videoslots', link: '' },
+    { title: 'Videopoker', link: '' },
 
 
   ];
+  items1: any[] = [
+    { title: 'Pragmatic', link: '' },
+    { title: 'Appolo', link: '' },
+    { title: 'Pragmatic', link: '' },
+    { title: 'Appolo', link: '' },
+    { title: 'Pragmatic', link: '' },
+    { title: 'Appolo', link: '' },
+    { title: 'Pragmatic', link: '' },
+    { title: 'Appolo', link: '' },
+    { title: 'Pragmatic', link: '' },
+    { title: 'Appolo', link: '' },
+    { title: 'Pragmatic', link: '' },
+    { title: 'Appolo', link: '' },
+
+
+  ];
+
 }
