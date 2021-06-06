@@ -24,13 +24,15 @@
 </mat-toolbar>
 
 <div>
-  <ngx-horizontal-scroll-menu [background]="background" [items]="items" [linkLabel]="'link'" [text]="text" [distance]="distance">
+  <ngx-horizontal-scroll-menu [background]="background" [items]="items" [linkLabel]="'link'" [text]="text"
+    [distance]="distance">
   </ngx-horizontal-scroll-menu>
 
 </div>
 
 <div style="padding-top: 1%;">
-  <ngx-horizontal-scroll-menu [background]="background1" [items]="items1" [linkLabel]="'link'" [text]="text1" [distance]="distance">
+  <ngx-horizontal-scroll-menu [background]="background1" [items]="items1" [linkLabel]="'link'" [text]="text1"
+    [distance]="distance">
   </ngx-horizontal-scroll-menu>
 
 </div>
@@ -46,9 +48,13 @@
 
 <div style="padding: 10px;"></div>
 <mat-grid-list [cols]="breakpoint" rowHeight="200" (window:resize)="onResize($event)" gutterSize="5px">
-  <mat-grid-tile>
-    <img src="/assets/images/img4.png" height="100%">
+  <mat-grid-tile class="container1">
+    <!-- <img src="/assets/images/img4.png" height="100%"> -->
 
+    <img src="/assets/images/img4.png"  class="image" height="100%">
+    <div class="middle">
+      <div class="text">Play</div>
+    </div>
   </mat-grid-tile>
   <mat-grid-tile> <img src="/assets/images/img3.jpg" height="100%" width="100%">
   </mat-grid-tile>
@@ -85,6 +91,6 @@
 
 </mat-grid-list>
 
-<button class="mine" mat-fab  title="My favaorate game" >
+<button class="mine" mat-fab title="My favaorate game">
   <mat-icon style="color: yellow;">star</mat-icon>
 </button>
