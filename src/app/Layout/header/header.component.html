@@ -1,13 +1,247 @@
-<mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>My App</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
+<mat-toolbar class="heading">
+  <!-- <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  > -->
+  <!-- <mat-icon>menu</mat-icon>
+  </button> -->
+  <span
+    ><img src="../../../assets/Images/Logo.png" alt="" style="width: 25px"
+  /></span>
+  <span><b> Lofo Games</b></span>
+  <span class="example-spacer"></span>
+  <span> Live Betting </span>
+  <span> Sports Betting</span>
+  <span> Games </span>
+  <span class="example-spacer"></span>
+  <!-- <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    <mat-icon>search</mat-icon>
+  </button> -->
+  <button
+    mat-mini-fab
+    color="warn"
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
+    <mat-icon>person</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="MainTextDiv">
+  <h2>Find The Master Class Below</h2>
+  <p>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the
+    1500s, when an unknown printer took a galley of type and scrambled it to
+    make a type specimen book. It has survived not only five centuries.
+  </p>
+</div>
+
+<div class="SliderContainer">
+  <ngb-carousel
+    [showNavigationArrows]="true"
+    [showNavigationIndicators]="true"
+    [keyboard]="true"
+    [interval]="2000"
+    [pauseOnHover]="true"
+    [wrap]="true"
+    [activeId]="'sliderThree'"
+  >
+    <ng-template ngbSlide >
+      <div class="picsum-img-wrapper">
+        <img
+          src="https://wallpapercave.com/wp/wp5623021.jpg"
+          alt="Carousel Two"
+          style="width: 100%; height: 330px; object-fit: cover"
+        />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide *ngFor="let i of sliderData">
+      <div class="picsum-img-wrapper">
+        <img
+          [src]="i.Img"
+          alt="Carousel One"
+          style="width: 100%; height: 330px; object-fit: cover"
+        />
+      </div>
+    </ng-template>
+    <!-- <ng-template ngbSlide id="sliderThree">
+      <div class="picsum-img-wrapper">
+        <img
+          src="https://wallpapercave.com/wp/wp2568253.jpg"
+          alt="Carousel Two"
+          style="width: 100%; height: 330px; object-fit: cover"
+        />
+      </div>
+    </ng-template> -->
+  </ngb-carousel>
+</div>
+
+<mat-toolbar class="SubHeading">
+  <div style="width: 50%">
+    <ngx-horizontal-scroll-menu 
+    (click)="settingHorizontalMenuData()"
+    *ngIf="items.length > 0"
+      [background]="background"
+      [linkLabel]="'link'"
+      [text]="text"
+      [distance]="distance"
+      [items]="items"
+    >
+    </ngx-horizontal-scroll-menu>
+  </div>
+
+  <span class="example-spacer"></span>
+
+  <button class="FavouriteButton" mat-stroked-button>
+    <mat-icon style="color: yellow">star</mat-icon>
+    My Favourite Games
+  </button>
+  <input type="text" style="width: 17%; height: 28px; border-radius: 5px" [value]="searchInputValue" (focus)="setSearchGames()" />
+  <!-- <mat-icon style="color: yellow">star</mat-icon></input> -->
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+    (click)="getSearchGame()"
+  >
+    <mat-icon>search</mat-icon>
+  </button>
+</mat-toolbar>
+
+<!-- <div class="BottomContainer">
+  <div class="SideBar">
+    <span>ALASKA</span>
+    <br />
+    <span>GAMELOFT</span>
+    <br />
+    <span>DEVHOPES</span>
+    <br />
+    <span>SUDOKU</span>
+    <br />
+    <span>ELECTRONIC</span>
+    <br />
+    <span>WELLOOP</span>
+    <br />
+    <span>SCI-LOFO</span>
+    <br />
+    <span>DAMOLIFY</span>
+  </div>
+  <div class="GridContainer">
+    <div class="cardBox" *ngFor="let i of tiles">
+      <div class="card">
+        <div class="front">
+          <img style="width: 100%; object-fit: fill" [src]="i.src" alt="" />
+        </div>
+        <div class="back">
+          <h3>BIG BASS BONANZA</h3>
+          <p>Click Below Icon To Play</p>
+          <button
+            mat-fab
+            color="warn"
+            aria-label="Example icon button with a home icon"
+          >
+            <mat-icon>play_arrow</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div> -->
+
+<!-- <mat-grid-list cols="6" rowHeight="180px">
+      <mat-grid-tile
+        *ngFor="let tile of tiles"
+        [colspan]="tile.cols"
+        [rowspan]="tile.rows"
+        [style.background]="tile.color"
+        style="margin: 5px"
+      >
+        {{ tile.text }}
+        <img [src]="tile.src" alt="" style="width: 100%; object-fit: fill" />
+      </mat-grid-tile>
+    </mat-grid-list> -->
+<!-- <div class="Card">
+      <img
+        src="https://s3-alpha-sig.figma.com/img/cc4a/de40/cc27e9669d4e13f03c4675197c4f68cd?Expires=1623628800&Signature=WNofmpJeyOGdIYcZ7o~lJFNBaYSwvAmeHzvbMggCFrHnBRBhlkmej5RgIW-82YCNeorBgi1PS~UJhIG9ApHLCzLEtDakskMyscx8DbXIgbwnD7wOr1Xk6UGaQ1OSQZc2sd1IzP~ZYG-mV65NTRBH6xZHZ5nSRCqQ0ZhvFZtpuSsx9V5HEfp1u6mYc~0MKOYcFJi0OJoX84exErqAGW4XT7r3vLFeknwdlRR6mANqzgkH3nrkJSfS203RLD2gOjDKICi8mbTo9AjII7H2y3u7mPQu9JrYhM0~LdytI7vsql3lV0-tOjgyNqo1zABDBvx4M~9L9bqpJ2HiIWX~KQD2Aw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+        alt=""
+        style="width: 100%; object-fit: fill"
+      />
+    </div>
+    <div class="Card">
+      <img
+        src="https://s3-alpha-sig.figma.com/img/cc4a/de40/cc27e9669d4e13f03c4675197c4f68cd?Expires=1623628800&Signature=WNofmpJeyOGdIYcZ7o~lJFNBaYSwvAmeHzvbMggCFrHnBRBhlkmej5RgIW-82YCNeorBgi1PS~UJhIG9ApHLCzLEtDakskMyscx8DbXIgbwnD7wOr1Xk6UGaQ1OSQZc2sd1IzP~ZYG-mV65NTRBH6xZHZ5nSRCqQ0ZhvFZtpuSsx9V5HEfp1u6mYc~0MKOYcFJi0OJoX84exErqAGW4XT7r3vLFeknwdlRR6mANqzgkH3nrkJSfS203RLD2gOjDKICi8mbTo9AjII7H2y3u7mPQu9JrYhM0~LdytI7vsql3lV0-tOjgyNqo1zABDBvx4M~9L9bqpJ2HiIWX~KQD2Aw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+        alt=""
+        style="width: 100%; object-fit: fill"
+      />
+    </div>
+    <div class="Card">
+      <img
+        src="https://s3-alpha-sig.figma.com/img/cc4a/de40/cc27e9669d4e13f03c4675197c4f68cd?Expires=1623628800&Signature=WNofmpJeyOGdIYcZ7o~lJFNBaYSwvAmeHzvbMggCFrHnBRBhlkmej5RgIW-82YCNeorBgi1PS~UJhIG9ApHLCzLEtDakskMyscx8DbXIgbwnD7wOr1Xk6UGaQ1OSQZc2sd1IzP~ZYG-mV65NTRBH6xZHZ5nSRCqQ0ZhvFZtpuSsx9V5HEfp1u6mYc~0MKOYcFJi0OJoX84exErqAGW4XT7r3vLFeknwdlRR6mANqzgkH3nrkJSfS203RLD2gOjDKICi8mbTo9AjII7H2y3u7mPQu9JrYhM0~LdytI7vsql3lV0-tOjgyNqo1zABDBvx4M~9L9bqpJ2HiIWX~KQD2Aw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+        alt=""
+        style="width: 100%; object-fit: fill"
+      />
+    </div>
+    <div class="Card">
+      <img
+        src="https://s3-alpha-sig.figma.com/img/cc4a/de40/cc27e9669d4e13f03c4675197c4f68cd?Expires=1623628800&Signature=WNofmpJeyOGdIYcZ7o~lJFNBaYSwvAmeHzvbMggCFrHnBRBhlkmej5RgIW-82YCNeorBgi1PS~UJhIG9ApHLCzLEtDakskMyscx8DbXIgbwnD7wOr1Xk6UGaQ1OSQZc2sd1IzP~ZYG-mV65NTRBH6xZHZ5nSRCqQ0ZhvFZtpuSsx9V5HEfp1u6mYc~0MKOYcFJi0OJoX84exErqAGW4XT7r3vLFeknwdlRR6mANqzgkH3nrkJSfS203RLD2gOjDKICi8mbTo9AjII7H2y3u7mPQu9JrYhM0~LdytI7vsql3lV0-tOjgyNqo1zABDBvx4M~9L9bqpJ2HiIWX~KQD2Aw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+        alt=""
+        style="width: 100%; object-fit: fill"
+      />
+    </div>
+    <div class="Card">
+      <img
+        src="https://s3-alpha-sig.figma.com/img/cc4a/de40/cc27e9669d4e13f03c4675197c4f68cd?Expires=1623628800&Signature=WNofmpJeyOGdIYcZ7o~lJFNBaYSwvAmeHzvbMggCFrHnBRBhlkmej5RgIW-82YCNeorBgi1PS~UJhIG9ApHLCzLEtDakskMyscx8DbXIgbwnD7wOr1Xk6UGaQ1OSQZc2sd1IzP~ZYG-mV65NTRBH6xZHZ5nSRCqQ0ZhvFZtpuSsx9V5HEfp1u6mYc~0MKOYcFJi0OJoX84exErqAGW4XT7r3vLFeknwdlRR6mANqzgkH3nrkJSfS203RLD2gOjDKICi8mbTo9AjII7H2y3u7mPQu9JrYhM0~LdytI7vsql3lV0-tOjgyNqo1zABDBvx4M~9L9bqpJ2HiIWX~KQD2Aw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+        alt=""
+        style="width: 100%; object-fit: fill"
+      />
+    </div>
+    <div class="Card">
+      <img
+        src="https://s3-alpha-sig.figma.com/img/cc4a/de40/cc27e9669d4e13f03c4675197c4f68cd?Expires=1623628800&Signature=WNofmpJeyOGdIYcZ7o~lJFNBaYSwvAmeHzvbMggCFrHnBRBhlkmej5RgIW-82YCNeorBgi1PS~UJhIG9ApHLCzLEtDakskMyscx8DbXIgbwnD7wOr1Xk6UGaQ1OSQZc2sd1IzP~ZYG-mV65NTRBH6xZHZ5nSRCqQ0ZhvFZtpuSsx9V5HEfp1u6mYc~0MKOYcFJi0OJoX84exErqAGW4XT7r3vLFeknwdlRR6mANqzgkH3nrkJSfS203RLD2gOjDKICi8mbTo9AjII7H2y3u7mPQu9JrYhM0~LdytI7vsql3lV0-tOjgyNqo1zABDBvx4M~9L9bqpJ2HiIWX~KQD2Aw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+        alt=""
+        style="width: 100%; object-fit: fill"
+      />
+    </div>
+    <div class="Card">
+      <img
+        src="https://s3-alpha-sig.figma.com/img/cc4a/de40/cc27e9669d4e13f03c4675197c4f68cd?Expires=1623628800&Signature=WNofmpJeyOGdIYcZ7o~lJFNBaYSwvAmeHzvbMggCFrHnBRBhlkmej5RgIW-82YCNeorBgi1PS~UJhIG9ApHLCzLEtDakskMyscx8DbXIgbwnD7wOr1Xk6UGaQ1OSQZc2sd1IzP~ZYG-mV65NTRBH6xZHZ5nSRCqQ0ZhvFZtpuSsx9V5HEfp1u6mYc~0MKOYcFJi0OJoX84exErqAGW4XT7r3vLFeknwdlRR6mANqzgkH3nrkJSfS203RLD2gOjDKICi8mbTo9AjII7H2y3u7mPQu9JrYhM0~LdytI7vsql3lV0-tOjgyNqo1zABDBvx4M~9L9bqpJ2HiIWX~KQD2Aw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+        alt=""
+        style="width: 100%; object-fit: fill"
+      />
+    </div>
+    <div class="Card">
+      <img
+        src="https://s3-alpha-sig.figma.com/img/cc4a/de40/cc27e9669d4e13f03c4675197c4f68cd?Expires=1623628800&Signature=WNofmpJeyOGdIYcZ7o~lJFNBaYSwvAmeHzvbMggCFrHnBRBhlkmej5RgIW-82YCNeorBgi1PS~UJhIG9ApHLCzLEtDakskMyscx8DbXIgbwnD7wOr1Xk6UGaQ1OSQZc2sd1IzP~ZYG-mV65NTRBH6xZHZ5nSRCqQ0ZhvFZtpuSsx9V5HEfp1u6mYc~0MKOYcFJi0OJoX84exErqAGW4XT7r3vLFeknwdlRR6mANqzgkH3nrkJSfS203RLD2gOjDKICi8mbTo9AjII7H2y3u7mPQu9JrYhM0~LdytI7vsql3lV0-tOjgyNqo1zABDBvx4M~9L9bqpJ2HiIWX~KQD2Aw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+        alt=""
+        style="width: 100%; object-fit: fill"
+      />
+    </div>
+    <div class="Card">
+      <img
+        src="https://s3-alpha-sig.figma.com/img/cc4a/de40/cc27e9669d4e13f03c4675197c4f68cd?Expires=1623628800&Signature=WNofmpJeyOGdIYcZ7o~lJFNBaYSwvAmeHzvbMggCFrHnBRBhlkmej5RgIW-82YCNeorBgi1PS~UJhIG9ApHLCzLEtDakskMyscx8DbXIgbwnD7wOr1Xk6UGaQ1OSQZc2sd1IzP~ZYG-mV65NTRBH6xZHZ5nSRCqQ0ZhvFZtpuSsx9V5HEfp1u6mYc~0MKOYcFJi0OJoX84exErqAGW4XT7r3vLFeknwdlRR6mANqzgkH3nrkJSfS203RLD2gOjDKICi8mbTo9AjII7H2y3u7mPQu9JrYhM0~LdytI7vsql3lV0-tOjgyNqo1zABDBvx4M~9L9bqpJ2HiIWX~KQD2Aw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+        alt=""
+        style="width: 100%; object-fit: fill"
+      />
+    </div>
+    <div class="Card">
+      <img
+        src="https://s3-alpha-sig.figma.com/img/cc4a/de40/cc27e9669d4e13f03c4675197c4f68cd?Expires=1623628800&Signature=WNofmpJeyOGdIYcZ7o~lJFNBaYSwvAmeHzvbMggCFrHnBRBhlkmej5RgIW-82YCNeorBgi1PS~UJhIG9ApHLCzLEtDakskMyscx8DbXIgbwnD7wOr1Xk6UGaQ1OSQZc2sd1IzP~ZYG-mV65NTRBH6xZHZ5nSRCqQ0ZhvFZtpuSsx9V5HEfp1u6mYc~0MKOYcFJi0OJoX84exErqAGW4XT7r3vLFeknwdlRR6mANqzgkH3nrkJSfS203RLD2gOjDKICi8mbTo9AjII7H2y3u7mPQu9JrYhM0~LdytI7vsql3lV0-tOjgyNqo1zABDBvx4M~9L9bqpJ2HiIWX~KQD2Aw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+        alt=""
+        style="width: 100%; object-fit: fill"
+      />
+    </div>
+    <div class="Card">
+      <img
+        src="https://s3-alpha-sig.figma.com/img/cc4a/de40/cc27e9669d4e13f03c4675197c4f68cd?Expires=1623628800&Signature=WNofmpJeyOGdIYcZ7o~lJFNBaYSwvAmeHzvbMggCFrHnBRBhlkmej5RgIW-82YCNeorBgi1PS~UJhIG9ApHLCzLEtDakskMyscx8DbXIgbwnD7wOr1Xk6UGaQ1OSQZc2sd1IzP~ZYG-mV65NTRBH6xZHZ5nSRCqQ0ZhvFZtpuSsx9V5HEfp1u6mYc~0MKOYcFJi0OJoX84exErqAGW4XT7r3vLFeknwdlRR6mANqzgkH3nrkJSfS203RLD2gOjDKICi8mbTo9AjII7H2y3u7mPQu9JrYhM0~LdytI7vsql3lV0-tOjgyNqo1zABDBvx4M~9L9bqpJ2HiIWX~KQD2Aw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+        alt=""
+        style="width: 100%; object-fit: fill"
+      />
+    </div> -->
+
+<!--     
+  </div>
+</div> -->

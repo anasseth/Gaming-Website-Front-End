@@ -1,0 +1,31 @@
+.SideBar {
+    background-color: white;
+    width: 10%;
+    height: auto;
+    // border: 2px solid black;
+    margin-bottom: 100px;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-top: 4%;
+  }
+  .SideBar {
+    span {
+      font-size: 20px;
+      color: #2e2e2e;
+      font-weight: 600;
+      margin-bottom: 26px !important;
+      height: auto;
+      // border-right: 5px solid red;
+      border-bottom: 5px solid transparent;
+      margin: auto;
+      display: inline-block;
+      padding-bottom:5px ;
+      padding-right: 10px;
+      transition-delay:0.2s;
+    }
+    span:hover {
+        transition-duration: 0.2s;
+      // border-right: transparent 5px solid;
+      border-bottom: red 5px solid;
+    }
+  }

@@ -1,0 +1,11 @@
+$footerBack: #000000;
+$footerFont: #fa0000;
+
+.footerStyling {
+  background-color: $footerBack;
+  color: $footerFont;
+  position:absolute !important;
+  bottom: 0;
+  text-align: center;
+  height:40px;
+}

@@ -34,8 +34,12 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HorizontalScrollMenuModule } from 'ngx-horizontal-scroll-menu';
 
 const MaterialComponent = [
+  NgbModule,
+  HorizontalScrollMenuModule,
   MatAutocompleteModule,
   MatFormFieldModule,
   MatButtonModule,

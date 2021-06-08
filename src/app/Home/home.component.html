@@ -1,1 +1,23 @@
-<p>home works!</p>
+<div class="GridContainer">
+  <div class="AlertBox" *ngIf="this.gamesData.length == 0">
+    Couldn't Find Any Game In this Category At the Moment
+  </div>
+  <div class="cardBox" *ngFor="let i of gamesData">
+    <div class="card">
+      <div class="front">
+        <img [src]="i.GameImg" alt="" />
+      </div>
+      <div class="back">
+        <h3>{{i.GameText}}</h3>
+        <!-- <p>Click Below Icon To Play</p> -->
+        <button
+          mat-fab
+          color="warn"
+          aria-label="Example icon button with a home icon"
+        >
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

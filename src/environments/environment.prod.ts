@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiBaseURL: 'https://spiel90.com/casino/',
 };

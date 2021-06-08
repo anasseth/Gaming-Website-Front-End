@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { HorizontalScrollMenuModule } from 'ngx-horizontal-scroll-menu';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
     LayoutRoutingModule,
     MatToolbarModule,
     MatIconModule,
+    HorizontalScrollMenuModule
   ],
 })
 export class LayoutModule { }

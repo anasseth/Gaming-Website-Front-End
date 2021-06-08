@@ -1,1 +1,5 @@
-<p>side-bar works!</p>
+<div class="SideBar">
+  <div *ngFor="let i of gamesProviderData" (click)="getGamesByCategory(i.ProviderName)">
+    <span>{{ i.ProviderName }}</span>
+  </div>
+</div>
