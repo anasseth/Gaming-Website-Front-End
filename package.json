@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build-prod": "ng build --configuration production",
+    "postbuild-prod": "npm run sw-prod-webpack",
+    "sw-prod-webpack": "rimraf ./dist/game-ui/service-worker.js && webpack --config ./src/sw-prod-webpack.config.js --progress --color && workbox injectManifest ./src/workbox-config.js"
   },
   "private": true,
   "dependencies": {
@@ -22,10 +25,22 @@
     "@angular/platform-browser-dynamic": "~12.0.2",
     "@angular/router": "~12.0.2",
     "@ng-bootstrap/ng-bootstrap": "^9.1.2",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "bootstrap": "^4.5.0",
+    "ng-search-filter": "^1.1.0",
+    "ngx-cookie-service": "^12.0.0",
     "ngx-horizontal-scroll-menu": "^1.0.9",
-    "rxjs": "~6.6.0",
+    "ngx-spinner": "^12.0.0",
+    "rxjs": "^6.6.7",
     "tslib": "^2.1.0",
+    "workbox-cacheable-response": "^6.1.5",
+    "workbox-core": "^6.1.5",
+    "workbox-expiration": "^6.1.5",
+    "workbox-precaching": "^6.1.5",
+    "workbox-routing": "^6.1.5",
+    "workbox-strategies": "^6.1.5",
+    "workbox-window": "^6.1.5",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -40,6 +55,11 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "typescript": "~4.2.3"
+    "rimraf": "^3.0.2",
+    "ts-loader": "^9.2.3",
+    "typescript": "~4.2.3",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2",
+    "workbox-cli": "^6.1.5"
   }
 }

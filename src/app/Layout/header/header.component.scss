@@ -27,10 +27,14 @@ $SubHeaderFont: #ffffff;
   flex: 1 1 auto;
   border: 1px solid red;
 }
+.example-spacer3 {
+  flex: 1 1 auto;
+  border: 1px solid red;
+}
 .example-spacer2 {
-    flex: 1 1 auto;
-    border: 1px solid black;
-  }
+  flex: 1 1 auto;
+  border: 1px solid black;
+}
 .SubHeading {
   background-color: $SubHeaderBack;
   color: $SubHeaderFont;
@@ -45,11 +49,15 @@ $SubHeaderFont: #ffffff;
   height: auto;
   width: 40%;
   position: absolute;
-  top: 23%;
+  top: 100px;
   left: 3%;
   z-index: 3;
   background-color: rgba(0, 0, 0, 0.637);
-  background: linear-gradient(180deg,rgba(0, 0, 0, 0.637),rgba(255, 0, 0, 0.74));
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.637),
+    rgba(255, 0, 0, 0.74)
+  );
   padding: 35px;
 }
 .MainTextDiv {
@@ -69,6 +77,9 @@ $SubHeaderFont: #ffffff;
   li {
     color: white;
   }
+}
+.searchInput {
+  width: 17%;
 }
 .SliderContainer {
   width: 100%;
@@ -94,15 +105,18 @@ $SubHeaderFont: #ffffff;
     border-bottom: 5px solid transparent;
     margin: auto;
     display: inline-block;
-    padding-bottom:5px ;
+    padding-bottom: 5px;
     padding-right: 10px;
-    transition-delay:0.2s;
+    transition-delay: 0.2s;
   }
   span:hover {
-      transition-duration: 0.2s;
+    transition-duration: 0.2s;
     // border-right: transparent 5px solid;
     border-bottom: red 5px solid;
   }
+}
+.SliderImage {
+  height: 330px;
 }
 
 .BottomContainer {
@@ -115,168 +129,172 @@ $SubHeaderFont: #ffffff;
   padding: 10px;
   flex-direction: row;
 }
-.GridContainer {
-  width: 85%;
-  //   border: 10px solid black;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: row;
-  height: fit-content !important;
+.CategoryProviderBar {
+  visibility: hidden;
+  display: none;
 }
-.Card {
-  width: 18%;
-  height: auto;
-  margin: 10px;
+
+@media screen and (max-width: 1020px) {
+  .MainTextDiv {
+    top: 100px;
+    width: 40%;
+  }
+  .MainTextDiv {
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 17px;
+    }
+  }
 }
-.cardBox {
-  float: left;
-  font-size: 1.2em;
-  margin: 10px 0 0 10px;
-  perspective: 800px;
-  transition: all 0.3s ease 0s;
-  width: 18%;
-  // box-shadow: 0px 10px 30px 0px rgba(50, 50, 50, 0.38);
+@media screen and (max-width: 830px) {
+  .MainTextDiv {
+    top: 100px;
+    width: 40%;
+  }
+  .MainTextDiv {
+    h2 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 13px;
+    }
+  }
+  .heading {
+    span {
+      font-size: 16px;
+      margin-left: 5px;
+      margin-right: 5px;
+      border-bottom: 2px solid black;
+    }
+    span:hover {
+      border-bottom: 2px solid red;
+    }
+  }
 }
-input{
+
+@media screen and (max-width: 730px) {
+  .loginBtn {
+    height: 30px;
+    font-size: 14px;
+    padding: unset;
+  }
+  .registerBtn {
+    height: 30px;
+    font-size: 14px;
+    padding: unset;
+  }
+  .MainTextDiv {
+    top: 100px;
+    margin: auto;
+    width: 40%;
+  }
+  .MainTextDiv {
+    h2 {
+      font-size: 13px;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+  .heading {
+    span {
+      font-size: 13px;
+      margin-left: 5px;
+      margin-right: 5px;
+      border-bottom: 2px solid black;
+    }
+    span:hover {
+      border-bottom: 2px solid red;
+    }
+  }
+  .CategoryProviderBar {
+    visibility: visible;
+    display: flex;
+  }
+  .searchInput {
+    width: 45%;
+    outline: none;
+    font-size: 12px;
+    color: red;
     border: 1px solid transparent;
-}
-
-.cardBox:hover .card {
-  transform: rotateY(180deg);
-}
-
-//   .card {
-//     background: #222;
-//     cursor: default;
-//     height: 300px;
-//     transform-style: preserve-3d;
-//     transition: transform 0.4s ease 0s;
-//     width: 100%;
-//     -webkit-animation: giro 1s 1;
-//     animation: giro 1s 1;
-//   }
-.card {
-  background: #222;
-  cursor: default;
-  height: 200px;
-  transform-style: preserve-3d;
-  transition: transform 0.4s ease 0s;
-  width: 100%;
-  -webkit-animation: giro 1s 1;
-  animation: giro 1s 1;
-}
-.card p {
-  margin-bottom: 1.8em;
-}
-
-.card .front,
-.card .back {
-  backface-visibility: hidden;
-  box-sizing: border-box;
-  color: white;
-  display: block;
-  font-size: 1.2em;
-  height: auto;
-  // padding: 0.8em;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-}
-.card .back {
-  padding: 0.8em;
-}
-
-.card .front strong {
-  background: #fff;
-  border-radius: 100%;
-  color: #222;
-  font-size: 1.5em;
-  line-height: 30px;
-  padding: 0 7px 4px 6px;
-}
-
-.card .back {
-  transform: rotateY(180deg);
-}
-
-.card .back a {
-  padding: 0.3em 0.5em;
-  background: #333;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 1px;
-  font-size: 0.9em;
-  transition: all 0.2s ease 0s;
-}
-
-.card .back a:hover {
-  background: #fff;
-  color: #333;
-  text-shadow: 0 0 1px #333;
-}
-
-.cardBox:nth-child(2) .card {
-  -webkit-animation: giro 1.5s 1;
-  animation: giro 1.5s 1;
-}
-
-.cardBox:nth-child(3) .card {
-  -webkit-animation: giro 2s 1;
-  animation: giro 2s 1;
-}
-
-.cardBox:nth-child(4) .card {
-  -webkit-animation: giro 2.5s 1;
-  animation: giro 2.5s 1;
-}
-.FavouriteButton {
-  background-color: transparent;
-  color: white;
-  font-size: 16px;
-}
-
-@-webkit-keyframes giro {
-  from {
-    transform: rotateY(180deg);
   }
-  to {
-    transform: rotateY(0deg);
+  .FavouriteButton {
+    width: 45%;
+    font-size: 12px;
   }
-}
-
-@keyframes giro {
-  from {
-    transform: rotateY(180deg);
-  }
-  to {
-    transform: rotateY(0deg);
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .cardBox {
-    margin-left: 2.8%;
-    margin-top: 3%;
-    width: 46%;
-  }
-  .card {
-    height: 285px;
-  }
-  .cardBox:last-child {
-    margin-bottom: 3%;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .SideBar {
+  .ngx-horizontal-scroll-menu {
     display: none;
     visibility: hidden;
   }
-  .cardBox {
-    width: 94.5%;
+}
+
+@media screen and (max-width: 650px) {
+  .loginBtn {
+    height: 30px;
+    font-size: 14px;
+    padding: unset;
   }
-  .card {
-    height: 260px;
+  .registerBtn {
+    height: 30px;
+    font-size: 14px;
+    padding: unset;
+  }
+  .MainTextDiv {
+    top: 100px;
+    width: 80%;
+    margin: auto;
+    margin: auto;
+    left: 0px;
+    right: 0px;
+  }
+  .NavBarTitles {
+    span {
+      display: none;
+      visibility: hidden;
+    }
+  }
+  .SliderImage {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .loginBtn {
+    height: 30px;
+    font-size: 11px;
+    padding: unset;
+  }
+  .registerBtn {
+    // padding: 2px;
+    height: 30px;
+    font-size: 11px;
+    padding: unset;
+  }
+  .NavBarCategory {
+    display: none;
+    visibility: hidden;
+  }
+  .MainTextDiv {
+    top: 100px;
+    width: 80%;
+    margin: auto;
+    left: 0px;
+    right: 0px;
+  }
+
+  .example-spacer3 {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .MainTextDiv {
+    margin: auto;
+    left: 0px;
+    right: 0px;
+    top: 80px;
   }
 }

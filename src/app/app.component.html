@@ -1,5 +1,25 @@
-<app-header></app-header>
+<ngx-spinner
+  bdColor="rgba(250,0,0,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-clip-rotate-pulse"
+  [fullScreen]="true"
+  ><p style="color: white">Loading...</p></ngx-spinner
+>
+<app-header [authenticated]="authenticated"></app-header>
 <div class="BottomContainer">
   <app-side-bar></app-side-bar>
   <router-outlet></router-outlet>
+</div>
+<div class="GameLaunchDiv" *ngIf="showPopup">
+  <button
+    mat-mini-fab
+    color="warn"
+    aria-label="Example icon button with a home icon"
+    class="ButtonTag"
+    (click)="showPopup = !showPopup"
+  >
+    <mat-icon>cancel</mat-icon>
+  </button>
+  <iframe class="GameLaunchFrame" [src]="urlSafe"></iframe>
 </div>

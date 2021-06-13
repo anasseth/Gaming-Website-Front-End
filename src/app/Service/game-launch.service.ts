@@ -7,9 +7,10 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class FavoriteGamesService {
+export class LaunchGameService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  favoriteGameData: any;
+  gameProvidersData: any;
+  launchGameURL: string = "www.google.com";
   tokenInfo: any;
 
   constructor(private http: HttpClient) {
@@ -17,39 +18,18 @@ export class FavoriteGamesService {
     this.tokenInfo = JSON.parse(tokenSign)
   }
 
-  getFavoriteGames(): Observable<any> {
-    return this.http.get<any>(environment.apiBaseURL + 'GetFavGames/1021').pipe(catchError(this.error))
-  }
+  launchGame(i: any): Observable<any> {
 
-  setFavoriteGames() {
-    this.getFavoriteGames().subscribe(
-      data => {
-        this.favoriteGameData = data;
-      },
-      err => {
-        console.log(err);
-      }
-    )
-  }
-
-  addFavoriteGames(selectedGame: any) {
     let headers = this.headers
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*')
       .set('token', `${this.tokenInfo.token}`)
       .set('signature', `${this.tokenInfo.signature}`)
 
-    return this.http.post<any>(environment.apiBaseURL + 'AddFavGame/' + this.tokenInfo.sessionID + '/1', selectedGame, { 'headers': headers }).pipe(catchError(this.error))
-  }
+    this.launchGameURL = environment.apiBaseURL + 'GameLaunch/' + this.tokenInfo.sessionID + '/' + i.ProviderId + '/' + i.Aggregator + '/' + 'desktop' + '/' + 'en' + '/' + i.ProductId
+    console.log(this.launchGameURL)
 
-  removeFavoriteGame(selectedGame: any) {
-    let headers = this.headers
-      .set('content-type', 'application/json')
-      .set('Access-Control-Allow-Origin', '*')
-      .set('token', `${this.tokenInfo.token}`)
-      .set('signature', `${this.tokenInfo.signature}`)
-
-    return this.http.post<any>(environment.apiBaseURL + 'RemoveFavGame/' + this.tokenInfo.sessionID+ '/1', selectedGame, { 'headers': headers }).pipe(catchError(this.error))
+    return this.http.get<any>(environment.apiBaseURL + 'GameLaunch/' + this.tokenInfo.sessionID + '/' + i.ProviderId + '/' + i.Aggregator + '/' + 'desktop' + '/' + 'en' + '/' + i.ProductId, { 'headers': headers }).pipe(catchError(this.error))
   }
 
   error(error: HttpErrorResponse) {

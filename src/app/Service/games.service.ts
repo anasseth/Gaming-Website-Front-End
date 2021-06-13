@@ -10,8 +10,9 @@ import { environment } from '../../environments/environment';
 export class GamesService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   gamesData: any = [];
-  filterGamesData: any = [];
-  searchGamesData: any = [];
+  filterGamesData: any[] = [];
+  searchGamesData: any[] = [];
+  keyword: string = '';
 
   constructor(private http: HttpClient) { }
 
@@ -23,25 +24,29 @@ export class GamesService {
   }
 
   setGames() {
-    this.getGames().subscribe(
-      data => {
-        this.gamesData = data;
-        this.filterGamesData = data;
-      },
-      err => {
-        console.log(err);
-      }
-    )
+    if (this.gamesData.length == 0 || this.gamesData.length < 0) {
+      this.getGames().subscribe(
+        data => {
+          this.gamesData = data;
+          this.filterGamesData = data;
+        },
+        err => {
+          console.log(err);
+        }
+      )
+    }
   }
   setSearchGames() {
-    this.SearchGames().subscribe(
-      data => {
-        this.searchGamesData = data;
-      },
-      err => {
-        console.log(err);
-      }
-    )
+    if (this.searchGamesData.length == 0 || this.searchGamesData.length < 0) {
+      this.SearchGames().subscribe(
+        data => {
+          this.searchGamesData = data;
+        },
+        err => {
+          console.log(err);
+        }
+      )
+    }
   }
 
   GetGamesByCatgory(Name: string) {
@@ -52,6 +57,7 @@ export class GamesService {
       }
     }
   }
+
   GetGamesByProvider(Name: string) {
     this.filterGamesData = [];
     for (var i = 0; i < this.gamesData.length; i++) {
@@ -60,14 +66,29 @@ export class GamesService {
       }
     }
   }
-  GetSearchGames(Name: string) {
-    this.filterGamesData = [];
-    for (var i = 0; i < this.searchGamesData.length; i++) {
-      if (Name.toLocaleLowerCase() == this.searchGamesData[i].GameText.toLocaleLowerCase()) {
-        this.filterGamesData.push(this.searchGamesData[i])
-      }
-    }
+  // GetSearchGames(Name: string) {
+  //   this.filterGamesData = [];
+  //   for (var i = 0; i < this.searchGamesData.length; i++) {
+  //     if (Name.toLocaleLowerCase() == this.searchGamesData[i].GameText.toLocaleLowerCase()) {
+  //       this.filterGamesData.push(this.searchGamesData[i])
+  //     }
+  //   }
+  // }
+
+  async updateResults() {
+    this.filterGamesData = this.GetSearchGames(this.searchGamesData);
   }
+
+  GetSearchGames(items: any) {
+    return items.filter((i: { GameText: string; }) => {
+      if (this.keyword.trim() === '') {
+        return true;
+      } else {
+        return i.GameText.toLowerCase().includes(this.keyword.trim().toLocaleLowerCase());
+      }
+    })
+  }
+
 
   error(error: HttpErrorResponse) {
     let errorMessage = '';

@@ -1,13 +1,65 @@
 .BottomContainer {
-    display: flex;
-    flex-wrap: wrap;
-    //   border: 10px solid black;
-    justify-content: space-between;
-    width: 100%;
-    height: auto;
-    padding: 10px;
-    flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  //   border: 10px solid black;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  flex-direction: row;
+}
+.GameLaunchDiv{
+background-color: rgba(0, 0, 0, 0.815);
+position: fixed;
+top: 0px;
+bottom: 0px;
+left: 0px;
+right: 0px;
+z-index: 50;
+text-align: center;
+align-items: center;
+vertical-align: middle;
+}
+.ButtonTag{
+  position: fixed;
+  top:0px;
+  right: 0px;
+}
+.GameLaunchFrame{
+  vertical-align: middle;
+  width: 80%;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  // min-height:500px;
+  // margin-top: 100px;
+  height: 100%;
+}
+app-home {
+  width: 85%;
+}
+@media screen and (max-width: 1020px) {
+  .BottomContainer {
+    flex-wrap: nowrap;
   }
-  app-home{
-      width: 85%;
+}
+@media screen and (max-width: 830px) {
+  .SideBar {
+    span {
+      font-size: 18px;
+    }
   }
+}
+
+@media screen and (max-width: 730px) {
+  .BottomContainer {
+    padding: auto;
+    text-align: center;
+  }
+  app-home {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+}

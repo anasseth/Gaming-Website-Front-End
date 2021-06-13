@@ -8,14 +8,34 @@
         <img [src]="i.GameImg" alt="" />
       </div>
       <div class="back">
-        <h3>{{i.GameText}}</h3>
+        <h3>{{ i.GameText }}</h3>
         <!-- <p>Click Below Icon To Play</p> -->
         <button
-          mat-fab
+          mat-mini-fab
+          color="primary"
+          aria-label="Example icon button with a home icon"
+          class="buttonTag"
+          (click)="removeFavouriteGame(i)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
           color="warn"
           aria-label="Example icon button with a home icon"
+          class="buttonTag"
+          (click)="gameLaunch(i)"
         >
           <mat-icon>play_arrow</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
+          color="accent"
+          aria-label="Example icon button with a home icon"
+          class="buttonTag"
+         (click)="postFavouriteGame(i)" 
+        >
+          <mat-icon>favorite</mat-icon>
         </button>
       </div>
     </div>

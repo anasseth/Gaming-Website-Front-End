@@ -1,0 +1,10 @@
+{
+    "header":{
+        "main_title":"LofoGames",
+        "registerButton":"Register",
+        "logInButton":"LogIn",
+        "mainTextDivTitle":"Find The Master Class Below",
+        "mainTextDivParagraph":" Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+        "favoriteButton":"Favourite Games"
+    }
+}

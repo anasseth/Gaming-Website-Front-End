@@ -1,9 +1,12 @@
 import { ElementRef, Renderer2 } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CategoriesService } from 'src/app/Service/categories.service';
 import { GamesProviderService } from 'src/app/Service/games-provider.service';
 import { GamesService } from 'src/app/Service/games.service';
 import { SlidersService } from 'src/app/Service/sliders.service';
+import { TranslateService } from '@ngx-translate/core';
+import { FavoriteGamesService } from 'src/app/Service/favorite-games.service';
+// import { NgSearchFilterService } from 'ng-search-filter';
 
 @Component({
   selector: 'app-header',
@@ -12,16 +15,23 @@ import { SlidersService } from 'src/app/Service/sliders.service';
 })
 export class HeaderComponent implements OnInit {
 
+
+  @Input('authenticated') authenticated: boolean = false;
+
   sliderData: any = [];
   gamesProviderData: any = [];
   categoriesData: any = [];
+  searchGamesData: any = [];
   listenFunc: any;
   searchInputValue: any = "";
   focusFirstTime: number = 0;
   items: any[] = [
   ];
 
-  constructor(private games: GamesService, elementRef: ElementRef, renderer: Renderer2, private categories: CategoriesService, private slider: SlidersService, private gamesProvider: GamesProviderService) {
+  constructor(private favourite: FavoriteGamesService, private translate: TranslateService, private games: GamesService, elementRef: ElementRef, renderer: Renderer2, private categories: CategoriesService, private slider: SlidersService, private gamesProvider: GamesProviderService) {
+
+    translate.setDefaultLang('en');
+
     this.listenFunc = renderer.listen(elementRef.nativeElement, 'click', (event) => {
       event.preventDefault();
       let target = event.target || event.srcElement || event.currentTarget;
@@ -30,9 +40,16 @@ export class HeaderComponent implements OnInit {
         this.games.GetGamesByCatgory(target.innerHTML);
       }
     });
+
   }
   ngOnInit(): void {
-
+    console.log(this.authenticated)
+    this.gamesProvider.getGameProviders().subscribe(
+      data => {
+        this.gamesProviderData = data
+        console.log(this.gamesProviderData)
+      }
+    )
     this.slider.getSliders().subscribe(
       (data) => {
         this.sliderData = data;
@@ -50,17 +67,35 @@ export class HeaderComponent implements OnInit {
       }
     )
   }
+
+  getFavouriteGame() {
+    this.favourite.setFavoriteGames();
+    setTimeout(() => {
+      this.games.filterGamesData = this.favourite.favoriteGameData
+    }, 300);
+  }
+
+  getGamesByCategory(Name: string) {
+    this.games.GetGamesByCatgory(Name);
+  }
+
+  getGamesByProviders(Name: string) {
+    this.games.GetGamesByProvider(Name);
+  }
+
   setSearchGames() {
     if (this.focusFirstTime == 0) {
       this.games.setSearchGames()
-      this.focusFirstTime++;
     }
   }
 
-  getSearchGame() {
-    console.log(this.searchInputValue)
-    this.games.GetSearchGames(this.searchInputValue);
+  updateSearchKeyword(event: any) {
+    this.searchInputValue = event.target.value;
+    this.games.keyword = this.searchInputValue;
+    this.games.updateResults();
   }
+
+
 
   settingHorizontalMenuData() {
     let item: any = {}
@@ -71,6 +106,8 @@ export class HeaderComponent implements OnInit {
     }
     console.log(this.items[0].title)
   }
+
+
   background = 'background';
   text = 'text-style';
   title = 'horizontal-menu-test';
