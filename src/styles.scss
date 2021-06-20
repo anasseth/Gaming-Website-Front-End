@@ -23,4 +23,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: rgb(0, 0, 0);
     font-size: larger;
     text-decoration: none;
+    // transition: .5s ease;
+
+}
+
+.text-style1:hover {
+    color:#ff0000;
+    font-size: larger;
+    text-decoration: none;
+    font-weight: bold;
+    // transition: .5s ease;
+
 }

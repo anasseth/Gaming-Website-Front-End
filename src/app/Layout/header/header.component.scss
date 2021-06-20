@@ -111,6 +111,7 @@ mat-grid-tile {
   position: relative;
   width: 50%;
   background-color: red;
+  cursor: pointer;
 
 }
 
@@ -151,4 +152,7 @@ mat-grid-tile {
   color: white;
   font-size: 22px;
   padding: 16px 32px;
+}
+.border-radius{
+  border-radius: 5px;
 }

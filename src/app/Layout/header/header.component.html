@@ -24,13 +24,16 @@
 </mat-toolbar>
 
 <div>
+  <label style="padding-left: 15px;font-weight: bold;">All Games</label>
+
   <ngx-horizontal-scroll-menu [background]="background" [items]="items" [linkLabel]="'link'" [text]="text"
     [distance]="distance">
   </ngx-horizontal-scroll-menu>
 
 </div>
 
-<div style="padding-top: 1%;">
+<div >
+  <label style="padding-left: 15px;font-weight: bold;">Game provider</label>
   <ngx-horizontal-scroll-menu [background]="background1" [items]="items1" [linkLabel]="'link'" [text]="text1"
     [distance]="distance">
   </ngx-horizontal-scroll-menu>
@@ -46,46 +49,50 @@
 
 </carousel>
 
-<div style="padding: 10px;"></div>
-<mat-grid-list [cols]="breakpoint" rowHeight="200" (window:resize)="onResize($event)" gutterSize="5px">
-  <mat-grid-tile class="container1">
+<div style="padding: 5px;"></div>
+<mat-grid-list style="margin:10px; border-radius: 5px;" [cols]="breakpoint" rowHeight="200" (window:resize)="onResize($event)"
+  gutterSize="10px">
+  <mat-grid-tile class="container1 border-radius" >
     <!-- <img src="/assets/images/img4.png" height="100%"> -->
 
-    <img src="/assets/images/img4.png"  class="image" height="100%" width="100%">
+    <img src="/assets/images/img4.png" class="image" height="100%" width="100%">
     <div class="middle">
-      <div class="text">Play</div>
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+         Play
+      </div>
     </div>
   </mat-grid-tile>
-  <mat-grid-tile> <img src="/assets/images/img3.jpg" height="100%" width="100%">
+  <mat-grid-tile class="border-radius"> <img src="/assets/images/img3.jpg" height="100%" width="100%">
   </mat-grid-tile>
-  <mat-grid-tile><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
+  <mat-grid-tile class="border-radius"><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
+  <mat-grid-tile class="border-radius">
+    <img src="/assets/images/img4.png" height="100%">
+
+  </mat-grid-tile >
+  <mat-grid-tile class="border-radius"> <img src="/assets/images/img3.jpg" height="100%" width="100%">
+  </mat-grid-tile>
+  <mat-grid-tile class="border-radius"><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
   <mat-grid-tile>
     <img src="/assets/images/img4.png" height="100%">
 
   </mat-grid-tile>
-  <mat-grid-tile> <img src="/assets/images/img3.jpg" height="100%" width="100%">
+  <mat-grid-tile class="border-radius"> <img src="/assets/images/img3.jpg" height="100%" width="100%">
   </mat-grid-tile>
-  <mat-grid-tile><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
-  <mat-grid-tile>
+  <mat-grid-tile class="border-radius"><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
+
+  <mat-grid-tile class="border-radius">
     <img src="/assets/images/img4.png" height="100%">
 
   </mat-grid-tile>
-  <mat-grid-tile> <img src="/assets/images/img3.jpg" height="100%" width="100%">
+  <mat-grid-tile class="border-radius"> <img src="/assets/images/img3.jpg" height="100%" width="100%">
   </mat-grid-tile>
-  <mat-grid-tile><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
-
-  <mat-grid-tile>
+  <mat-grid-tile class="border-radius"><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
+  <mat-grid-tile class="border-radius">
     <img src="/assets/images/img4.png" height="100%">
 
   </mat-grid-tile>
-  <mat-grid-tile> <img src="/assets/images/img3.jpg" height="100%" width="100%">
-  </mat-grid-tile>
-  <mat-grid-tile><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
-  <mat-grid-tile>
-    <img src="/assets/images/img4.png" height="100%">
-
-  </mat-grid-tile>
-  <mat-grid-tile> <img src="/assets/images/img3.jpg" height="100%" width="100%">
+  <mat-grid-tile class="border-radius"> <img src="/assets/images/img3.jpg" height="100%" width="100%">
   </mat-grid-tile>
 
 

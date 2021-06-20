@@ -17,10 +17,10 @@ export class HeaderComponent implements OnInit {
 
 
   images = [
-    { path: '/assets/images/img1.jpg' },
-    { path: '/assets/images/img4.png' },
+    { path: '/assets/images/img 4.jpg' },
+    { path: '/assets/images/img6.jpg' },
 
-    { path: '/assets/images/img3.jpg' },
+    { path: '/assets/images/img7.jpg' },
 
 
   ]
