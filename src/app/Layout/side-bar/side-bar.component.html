@@ -1,1 +1,26 @@
-<p>side-bar works!</p>
+<div>
+    <label style="padding-left: 15px;font-weight: bold;">All Games</label>
+
+    <div>
+        <ngx-horizontal-scroll-menu [background]="background" [items]="items" [linkLabel]="'link'" [text]="text"
+            [distance]="distance">
+        </ngx-horizontal-scroll-menu>
+    </div>
+
+
+</div>
+
+<div>
+    <label style="padding-left: 15px;font-weight: bold;">Game provider</label>
+    <ngx-horizontal-scroll-menu [background]="background1" [items]="items1" [linkLabel]="'link'" [text]="text1"
+        [distance]="distance">
+    </ngx-horizontal-scroll-menu>
+
+</div>
+
+
+<carousel [images]="images" [objectFit]="'cover'" [height]="300" [cellWidth]="'100%'" [autoplay]="true" [dots]="true">
+
+
+
+</carousel>

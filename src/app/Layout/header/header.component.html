@@ -1,6 +1,10 @@
 <mat-toolbar class="toolBar">
 
-  <span class="txt">LOGO</span>
+  <div>
+    <mat-icon style="color: red;transform: translate(0px,3px);">whatshot</mat-icon>
+    <label class="txt w-420"> WettArena Games</label>
+
+  </div>
   <span class="space"></span>
   <div class="input-container col-lg-4">
     <i class="material-icons eye1" matprefix>search</i>
@@ -14,25 +18,22 @@
       <mat-icon>input</mat-icon>
     </button>
   </div>
-  <!-- <button class="Registrieren " title="Registrieren">
-    <mat-icon>person</mat-icon>
 
-  </button>
-  <button class="Anmelden" title="Anmelden">
-    <mat-icon>input</mat-icon>
-  </button> -->
 </mat-toolbar>
 
-<div>
+<!-- <div>
   <label style="padding-left: 15px;font-weight: bold;">All Games</label>
 
-  <ngx-horizontal-scroll-menu [background]="background" [items]="items" [linkLabel]="'link'" [text]="text"
-    [distance]="distance">
-  </ngx-horizontal-scroll-menu>
+  <div>
+    <ngx-horizontal-scroll-menu [background]="background" [items]="items" [linkLabel]="'link'" [text]="text"
+      [distance]="distance">
+    </ngx-horizontal-scroll-menu>
+  </div>
+
 
 </div>
 
-<div >
+<div>
   <label style="padding-left: 15px;font-weight: bold;">Game provider</label>
   <ngx-horizontal-scroll-menu [background]="background1" [items]="items1" [linkLabel]="'link'" [text]="text1"
     [distance]="distance">
@@ -43,61 +44,158 @@
 
 <carousel [images]="images" [objectFit]="'cover'" [height]="300" [cellWidth]="'100%'" [autoplay]="true" [dots]="true">
 
-  <!-- <img src="/assets/images/img1.jpg">
-  <img src="/assets/images/img2.jpg">
-  <img src="/assets/images/img3.jpg"> -->
+
 
 </carousel>
 
 <div style="padding: 5px;"></div>
-<mat-grid-list style="margin:10px; border-radius: 5px;" [cols]="breakpoint" rowHeight="200" (window:resize)="onResize($event)"
-  gutterSize="10px">
-  <mat-grid-tile class="container1 border-radius" >
-    <!-- <img src="/assets/images/img4.png" height="100%"> -->
+<mat-grid-list style="margin:10px; border-radius: 5px;" [cols]="breakpoint" rowHeight="200"
+  (window:resize)="onResize($event)" gutterSize="10px">
+  <mat-grid-tile class="container1 border-radius">
 
     <img src="/assets/images/img4.png" class="image" height="100%" width="100%">
     <div class="middle">
       <div class="text">
         <mat-icon>play_circle_filled</mat-icon>
-         Play
+        Play
       </div>
     </div>
   </mat-grid-tile>
-  <mat-grid-tile class="border-radius"> <img src="/assets/images/img3.jpg" height="100%" width="100%">
-  </mat-grid-tile>
-  <mat-grid-tile class="border-radius"><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
-  <mat-grid-tile class="border-radius">
-    <img src="/assets/images/img4.png" height="100%">
+  <mat-grid-tile class="container1 border-radius">
 
-  </mat-grid-tile >
-  <mat-grid-tile class="border-radius"> <img src="/assets/images/img3.jpg" height="100%" width="100%">
+    <img src="/assets/images/img3.jpg" class="image" height="100%" width="100%">
+    <div class="middle">
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+        Play
+      </div>
+    </div>
   </mat-grid-tile>
-  <mat-grid-tile class="border-radius"><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
-  <mat-grid-tile>
-    <img src="/assets/images/img4.png" height="100%">
+  <mat-grid-tile class="container1 border-radius">
 
+    <img src="/assets/images/img5.jpg" class="image" height="100%" width="100%">
+    <div class="middle">
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+        Play
+      </div>
+    </div>
   </mat-grid-tile>
-  <mat-grid-tile class="border-radius"> <img src="/assets/images/img3.jpg" height="100%" width="100%">
-  </mat-grid-tile>
-  <mat-grid-tile class="border-radius"><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
+  <mat-grid-tile class="container1 border-radius">
 
-  <mat-grid-tile class="border-radius">
-    <img src="/assets/images/img4.png" height="100%">
+    <img src="/assets/images/img4.png" class="image" height="100%" width="100%">
+    <div class="middle">
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+        Play
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile class="container1 border-radius">
 
+    <img src="/assets/images/img3.jpg" class="image" height="100%" width="100%">
+    <div class="middle">
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+        Play
+      </div>
+    </div>
   </mat-grid-tile>
-  <mat-grid-tile class="border-radius"> <img src="/assets/images/img3.jpg" height="100%" width="100%">
-  </mat-grid-tile>
-  <mat-grid-tile class="border-radius"><img src="/assets/images/img5.jpg" height="100%" width="100%"></mat-grid-tile>
-  <mat-grid-tile class="border-radius">
-    <img src="/assets/images/img4.png" height="100%">
+  <mat-grid-tile class="container1 border-radius">
 
+    <img src="/assets/images/img5.jpg" class="image" height="100%" width="100%">
+    <div class="middle">
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+        Play
+      </div>
+    </div>
   </mat-grid-tile>
-  <mat-grid-tile class="border-radius"> <img src="/assets/images/img3.jpg" height="100%" width="100%">
+  <mat-grid-tile class="container1 border-radius">
+
+    <img src="/assets/images/img4.png" class="image" height="100%" width="100%">
+    <div class="middle">
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+        Play
+      </div>
+    </div>
   </mat-grid-tile>
+  <mat-grid-tile class="container1 border-radius">
+
+    <img src="/assets/images/img3.jpg" class="image" height="100%" width="100%">
+    <div class="middle">
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+        Play
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile class="container1 border-radius">
+
+    <img src="/assets/images/img5.jpg" class="image" height="100%" width="100%">
+    <div class="middle">
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+        Play
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile class="container1 border-radius">
+
+    <img src="/assets/images/img4.png" class="image" height="100%" width="100%">
+    <div class="middle">
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+        Play
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile class="container1 border-radius">
+
+    <img src="/assets/images/img3.jpg" class="image" height="100%" width="100%">
+    <div class="middle">
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+        Play
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile class="container1 border-radius">
+
+    <img src="/assets/images/img5.jpg" class="image" height="100%" width="100%">
+    <div class="middle">
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+        Play
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile class="container1 border-radius">
+
+    <img src="/assets/images/img4.png" class="image" height="100%" width="100%">
+    <div class="middle">
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+        Play
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile class="container1 border-radius">
+
+    <img src="/assets/images/img3.jpg" class="image" height="100%" width="100%">
+    <div class="middle">
+      <div class="text">
+        <mat-icon>play_circle_filled</mat-icon>
+        Play
+      </div>
+    </div>
+  </mat-grid-tile>
+
 
 
 </mat-grid-list>
 
 <button class="mine" mat-fab title="My favaorate game">
   <mat-icon style="color: yellow;">star</mat-icon>
-</button>
+</button> -->

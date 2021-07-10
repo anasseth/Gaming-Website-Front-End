@@ -13,10 +13,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-size: larger;
     text-decoration: none;
 }
+.text-style:hover {
+    color:#ffffff;
+    font-size: larger;
+    text-decoration: none;
+    font-weight: bold;
+    // transition: .5s ease;
 
+}
 
 .background1 {
-    background-color: #ffffff;
+    background-color: #f5f5f5;
 }
 
 .text-style1 {
