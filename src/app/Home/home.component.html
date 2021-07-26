@@ -1,7 +1,10 @@
 <div class="GridContainer">
-  <div class="AlertBox" *ngIf="this.gamesData.length == 0">
+  <div class="AlertBox" *ngIf="this.gamesData?.length == 0">
     Couldn't Find Any Game In this Category At the Moment
   </div>
+  <!-- <div class="AlertBox" *ngIf="this.error">
+    <b>Error !</b> Please Try Again Later...
+  </div> -->
   <div class="cardBox" *ngFor="let i of gamesData">
     <div class="card">
       <div class="front">
@@ -16,6 +19,18 @@
           aria-label="Example icon button with a home icon"
           class="buttonTag"
           (click)="removeFavouriteGame(i)"
+          *ngIf="this.games.activeGames == 'Favorite'"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
+          color="primary"
+          aria-label="Example icon button with a home icon"
+          class="buttonTag disabled"
+          (click)="removeFavouriteGame(i)"
+          *ngIf="this.games.activeGames == 'Main'"
+          disabled
         >
           <mat-icon>delete</mat-icon>
         </button>
@@ -34,10 +49,34 @@
           aria-label="Example icon button with a home icon"
           class="buttonTag"
          (click)="postFavouriteGame(i)" 
+         *ngIf="this.games.activeGames == 'Main'"
         >
           <mat-icon>favorite</mat-icon>
         </button>
+        <button
+        mat-mini-fab
+        color="accent"
+        aria-label="Example icon button with a home icon"
+        class="buttonTag disabled"
+       *ngIf="this.games.activeGames == 'Favorite'"
+       disabled
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
       </div>
     </div>
   </div>
+</div>
+
+<div class="GameLaunchDiv" *ngIf="showPopup">
+  <button
+    mat-mini-fab
+    color="warn"
+    aria-label="Example icon button with a home icon"
+    class="ButtonTag"
+    (click)="showPopup = !showPopup"
+  >
+    <mat-icon>cancel</mat-icon>
+  </button>
+  <iframe class="GameLaunchFrame" [src]="urlSafe"></iframe>
 </div>

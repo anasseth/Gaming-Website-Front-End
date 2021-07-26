@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiBaseURL: 'https://spiel90.com/casino/',
-};
+  apiBaseURL: 'https://gapi.spiel90.com/casino/'
+}

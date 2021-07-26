@@ -11,7 +11,7 @@ import { HorizontalScrollMenuModule } from 'ngx-horizontal-scroll-menu';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     NgSearchFilterModule,
     HttpClientModule,
     TranslateModule,
+    NgxSpinnerModule
   ],
 })
 export class LayoutModule { }

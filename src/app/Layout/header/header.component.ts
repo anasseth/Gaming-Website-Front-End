@@ -6,6 +6,9 @@ import { GamesService } from 'src/app/Service/games.service';
 import { SlidersService } from 'src/app/Service/sliders.service';
 import { TranslateService } from '@ngx-translate/core';
 import { FavoriteGamesService } from 'src/app/Service/favorite-games.service';
+import { CheckSessionService } from 'src/app/Service/check-session.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 // import { NgSearchFilterService } from 'ng-search-filter';
 
 @Component({
@@ -23,12 +26,24 @@ export class HeaderComponent implements OnInit {
   categoriesData: any = [];
   searchGamesData: any = [];
   listenFunc: any;
+  userData: any = {};
   searchInputValue: any = "";
   focusFirstTime: number = 0;
   items: any[] = [
   ];
 
-  constructor(private favourite: FavoriteGamesService, private translate: TranslateService, private games: GamesService, elementRef: ElementRef, renderer: Renderer2, private categories: CategoriesService, private slider: SlidersService, private gamesProvider: GamesProviderService) {
+  constructor(
+    private spinner: NgxSpinnerService,
+    private favourite: FavoriteGamesService,
+    private translate: TranslateService,
+    private games: GamesService,
+    elementRef: ElementRef,
+    renderer: Renderer2,
+    private categories: CategoriesService,
+    private slider: SlidersService,
+    private gamesProvider: GamesProviderService,
+    public checkSession: CheckSessionService,
+  ) {
 
     translate.setDefaultLang('en');
 
@@ -44,6 +59,10 @@ export class HeaderComponent implements OnInit {
   }
   ngOnInit(): void {
     console.log(this.authenticated)
+
+    setTimeout(() => {
+      this.userData = this.checkSession.userData
+    }, 3000);
     this.gamesProvider.getGameProviders().subscribe(
       data => {
         this.gamesProviderData = data
@@ -69,6 +88,8 @@ export class HeaderComponent implements OnInit {
   }
 
   getFavouriteGame() {
+    this.games.activeGames = "Favorite"
+    this.spinner.show()
     this.favourite.setFavoriteGames();
     setTimeout(() => {
       this.games.filterGamesData = this.favourite.favoriteGameData
@@ -76,25 +97,53 @@ export class HeaderComponent implements OnInit {
   }
 
   getGamesByCategory(Name: string) {
+    this.spinner.show()
+    this.games.activeGames = "Main"
     this.games.GetGamesByCatgory(Name);
   }
 
-  getGamesByProviders(Name: string) {
-    this.games.GetGamesByProvider(Name);
+  setUserData() {
+    // if (this.userData == undefined || this.userData == null || this.userData == {}) {
+      let userData: any = localStorage.getItem("userData");
+      this.userData = JSON.parse(userData)
+      console.log(this.userData)
+      if(this.userData.status == 0){
+        // this.spinner.show()
+        // console.log("Recalling ")
+        // this.checkSession.setUserData();
+        // setTimeout(() => {
+        //   this.ngOnInit() 
+        //   this.spinner.hide()
+        // }, 2000);
+        window.location.reload();
+
+      }
+    
   }
 
-  setSearchGames() {
-    if (this.focusFirstTime == 0) {
-      this.games.setSearchGames()
-    }
+  getGamesByProviders(Name: string, id: number) {
+    this.games.activeGames = "Main"
+    this.spinner.show()
+    this.games.GetGamesByProvider(Name, id);
+  }
+
+  setSearchGames(keyword: string) {
+    this.spinner.show()
+    this.games.setSearchGames(keyword)
   }
 
   updateSearchKeyword(event: any) {
-    this.searchInputValue = event.target.value;
-    this.games.keyword = this.searchInputValue;
-    this.games.updateResults();
-  }
 
+    this.games.activeGames = "Main"
+    if (this.searchInputValue != event.target.value) {
+      this.spinner.show()
+      this.searchInputValue = event.target.value;
+      this.games.keyword = this.searchInputValue;
+      console.log(this.searchInputValue)
+      this.setSearchGames(this.searchInputValue)
+    }
+    // this.games.updateResults();
+  }
 
 
   settingHorizontalMenuData() {

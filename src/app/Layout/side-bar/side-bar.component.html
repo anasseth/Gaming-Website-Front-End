@@ -1,5 +1,5 @@
 <div class="SideBar">
-  <div *ngFor="let i of gamesProviderData" (click)="getGamesByCategory(i.ProviderName)">
+  <div *ngFor="let i of gamesProviderData" (click)="getGamesByProvider(i.ProviderName,i.ProviderId)">
     <span>{{ i.ProviderName }}</span>
   </div>
 </div>

@@ -3,6 +3,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { GamesProviderService } from './games-provider.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +14,20 @@ export class GamesService {
   filterGamesData: any[] = [];
   searchGamesData: any[] = [];
   keyword: string = '';
+  activeGames:string="Main"
 
   constructor(private http: HttpClient) { }
 
-  getGames(): Observable<any> {
-    return this.http.get<any>(environment.apiBaseURL + 'GetGames/0').pipe(catchError(this.error))
+  getGames(providerID:any): Observable<any> {
+    return this.http.get<any>(environment.apiBaseURL + 'GetGames/'+providerID).pipe(catchError(this.error))
   }
-  SearchGames(): Observable<any> {
-    return this.http.get<any>(environment.apiBaseURL + 'SearchGames/fruit').pipe(catchError(this.error))
+  SearchGames(keyword:string): Observable<any> {
+    return this.http.get<any>(environment.apiBaseURL + 'SearchGames/'+keyword).pipe(catchError(this.error))
   }
 
   setGames() {
     if (this.gamesData.length == 0 || this.gamesData.length < 0) {
-      this.getGames().subscribe(
+      this.getGames(0).subscribe(
         data => {
           this.gamesData = data;
           this.filterGamesData = data;
@@ -36,17 +38,19 @@ export class GamesService {
       )
     }
   }
-  setSearchGames() {
-    if (this.searchGamesData.length == 0 || this.searchGamesData.length < 0) {
-      this.SearchGames().subscribe(
+  setSearchGames(keyword:string) {
+    // if (this.searchGamesData.length == 0 || this.searchGamesData.length < 0) {
+      this.SearchGames(keyword).subscribe(
         data => {
           this.searchGamesData = data;
+          this.filterGamesData = data
+          console.log(data)
         },
         err => {
           console.log(err);
         }
       )
-    }
+    // }
   }
 
   GetGamesByCatgory(Name: string) {
@@ -58,13 +62,24 @@ export class GamesService {
     }
   }
 
-  GetGamesByProvider(Name: string) {
+  GetGamesByProvider(Name: string,id:number) {
     this.filterGamesData = [];
-    for (var i = 0; i < this.gamesData.length; i++) {
-      if (Name == this.gamesData[i].ProviderName) {
-        this.filterGamesData.push(this.gamesData[i])
+    this.getGames(id).subscribe(
+      data => {
+        this.gamesData = data;
+        this.filterGamesData = data;
+        console.log(data)
+      },
+      err => {
+        console.log(err);
       }
-    }
+    )
+    // for (var i = 0; i < this.gamesData.length; i++) {
+    //   if (Name == this.gamesData[i].ProviderName) {
+    //     this.filterGamesData.push(this.gamesData[i])
+    //   }
+    // }
+
   }
   // GetSearchGames(Name: string) {
   //   this.filterGamesData = [];

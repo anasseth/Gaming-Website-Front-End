@@ -260,6 +260,33 @@ $SubHeaderFont: #ffffff;
   }
 }
 
+.Status {
+  height: auto;
+  width: 70%;
+  color: white;
+  font-size: 12px;
+  padding: 7px;
+  border-radius: 1px;
+  letter-spacing: 1px;
+  margin: auto;
+}
+.Del {
+  background-color: rgb(20, 93, 189);
+}
+.Ship {
+  background-color: rgb(166, 255, 166);
+  padding: 4px;
+  color: green;
+  // border: 1px solid green;
+}
+.Cancel {
+  background-color: red
+}
+.Pending {
+  color: black;
+  background-color: #ffc107;
+}
+
 @media screen and (max-width: 650px) {
   .loginBtn {
     height: 30px;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { GamesProviderService } from 'src/app/Service/games-provider.service';
 import { GamesService } from 'src/app/Service/games.service';
 
@@ -10,7 +11,7 @@ import { GamesService } from 'src/app/Service/games.service';
 export class SideBarComponent implements OnInit {
   gamesProviderData: any = [];
 
-  constructor(private gamesProvider:GamesProviderService,private games:GamesService) { }
+  constructor(private gamesProvider:GamesProviderService,private games:GamesService,private spinner: NgxSpinnerService,) { }
 
   ngOnInit(): void {
     this.gamesProvider.getGameProviders().subscribe(
@@ -21,8 +22,11 @@ export class SideBarComponent implements OnInit {
     )
   }
 
-  getGamesByCategory(Name:string){
-    this.games.GetGamesByProvider(Name);
+  getGamesByProvider(Name:string,id:number){
+    this.spinner.show()
+    console.log(Name)
+    console.log(id)
+    this.games.GetGamesByProvider(Name,id);
   }
 
 }

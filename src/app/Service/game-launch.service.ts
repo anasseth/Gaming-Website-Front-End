@@ -10,7 +10,8 @@ import { environment } from '../../environments/environment';
 export class LaunchGameService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   gameProvidersData: any;
-  launchGameURL: string = "www.google.com";
+  showPopup: boolean = false;
+  launchGameURL: string = "";
   tokenInfo: any;
 
   constructor(private http: HttpClient) {
@@ -18,7 +19,7 @@ export class LaunchGameService {
     this.tokenInfo = JSON.parse(tokenSign)
   }
 
-  launchGame(i: any): Observable<any> {
+  launchGame(i: any, device: string): Observable<any> {
 
     let headers = this.headers
       .set('content-type', 'application/json')
@@ -26,10 +27,12 @@ export class LaunchGameService {
       .set('token', `${this.tokenInfo.token}`)
       .set('signature', `${this.tokenInfo.signature}`)
 
-    this.launchGameURL = environment.apiBaseURL + 'GameLaunch/' + this.tokenInfo.sessionID + '/' + i.ProviderId + '/' + i.Aggregator + '/' + 'desktop' + '/' + 'en' + '/' + i.ProductId
+    console.log("Game ID : " + i.GameId)
+
+    this.launchGameURL = environment.apiBaseURL + 'GameLaunch/' + this.tokenInfo.sessionID + '/' + i.ProviderId + '/' + i.Aggregator + '/' + device + '/' + 'en' + '/' + i.GameId
     console.log(this.launchGameURL)
 
-    return this.http.get<any>(environment.apiBaseURL + 'GameLaunch/' + this.tokenInfo.sessionID + '/' + i.ProviderId + '/' + i.Aggregator + '/' + 'desktop' + '/' + 'en' + '/' + i.ProductId, { 'headers': headers }).pipe(catchError(this.error))
+    return this.http.get<any>(environment.apiBaseURL + 'GameLaunch/' + this.tokenInfo.sessionID + '/' + i.ProviderId + '/' + i.Aggregator + '/' + device + '/' + 'en' + '/' + i.GameId, { 'headers': headers }).pipe(catchError(this.error))
   }
 
   error(error: HttpErrorResponse) {

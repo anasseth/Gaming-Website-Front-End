@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from './Service/categories.service';
-import { FavoriteGamesService } from './Service/favorite-games.service';
-import { GamesProviderService } from './Service/games-provider.service';
-import { GamesService } from './Service/games.service';
 import { SearchGamesService } from './Service/search-games.service';
-import { SlidersService } from './Service/sliders.service';
 import { ActivatedRoute } from '@angular/router';
 import { CheckSessionService } from './Service/check-session.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+// import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { LaunchGameService } from './Service/game-launch.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +14,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  test!:string;
+  test!: string;
   title = 'game-ui';
   token: any;
   showPopup: boolean = false;
@@ -27,9 +23,7 @@ export class AppComponent implements OnInit {
   userData: any;
   authenticated: boolean = false;
   sessionID: any;
-  name = 'Set iframe source';
-  url!: string;
-  urlSafe!: SafeResourceUrl;
+  language: string = "en";
 
 
   constructor(
@@ -37,22 +31,18 @@ export class AppComponent implements OnInit {
     private translate: TranslateService,
     private route: ActivatedRoute,
     private checkSession: CheckSessionService,
-    private categories: CategoriesService,
-    private favoriteGames: FavoriteGamesService,
-    private gamesProviders: GamesProviderService,
-    private games: GamesService,
     private searchGames: SearchGamesService,
-    private sliders: SlidersService,
     private spinner: NgxSpinnerService,
-    public sanitizer: DomSanitizer
+    // public sanitizer: DomSanitizer,
+    public launch: LaunchGameService
   ) {
-    translate.setDefaultLang('en');
+    translate.setDefaultLang(this.language);
+
   }
 
   ngOnInit() {
-    if (this.showPopup == true) {
-      this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
-    }
+    // localStorage.removeItem('tokenSign')
+
     this.spinner.show();
 
     this.route.queryParams.subscribe(
@@ -61,32 +51,23 @@ export class AppComponent implements OnInit {
         this.token = params.token;
         this.signature = params.signature
         this.test = params.test
+        if (params.lang != undefined || params.lang != null || params.lang != "") {
+          this.language = params.lang;
+          this.translate.setDefaultLang("en")
+        }
       }
     )
 
-
-    // this.categories.setCategories();
-    // this.favoriteGames.setFavoriteGames();
-    // this.gamesProviders.setGameProviders();
-    // this.games.setGames();
-    // this.searchGames.setSearchGames();
-    // this.sliders.setSlider();
-
     setTimeout(() => {
-      //   console.log(this.categories.categoriesData)
-      //   console.log(this.favoriteGames.favoriteGameData)
-      //   console.log(this.gamesProviders.gameProvidersData)
-      //   console.log(this.games.gamesData)
       console.log(this.searchGames.searchGamesData)
-      //   console.log(this.sliders.sliderData)
     }, 3000);
+
     setTimeout(() => {
-      /** spinner ends after 5 seconds */
       if ((this.token == null || this.token == undefined) && this.test == "testAdmin") {
 
         this.token = "4679b61a-704f-415b-875a-5dc594aaf3a5";
         this.signature = "0570dbeac0a750ebac44ff7ee72aaaf2";
-        this.authenticated = false;
+        this.authenticated = true;
 
         let tokenSign: any = {};
         tokenSign.token = this.token;
@@ -99,11 +80,18 @@ export class AppComponent implements OnInit {
         console.log(localStorage.getItem("tokenSign"));
 
         let sessionID = '_tqoyey9uj';
-        this.checkSession.checkSession(this.sessionID).subscribe(
+        this.checkSession.checkSession(sessionID).subscribe(
           data => {
             this.userData = data;
+            this.checkSession.userData = data
+            console.log("*****************")
+            console.log("*****************")
             console.log("*****************")
             console.log(this.userData)
+            console.log("*****************")
+            console.log("*****************")
+            console.log("*****************")
+            localStorage.setItem('userData', JSON.stringify(data))
             // alert(data)
           }, (err) => {
             this.authenticated = false
@@ -116,7 +104,7 @@ export class AppComponent implements OnInit {
           }
         )
       }
-      else if (this.token != null || this.token != undefined || this.token != "") {
+      else if (this.token != null || this.token != undefined) {
         this.authenticated = true;
         this.sessionID = this.cookieService.get('gamesessionid');
 
@@ -137,6 +125,7 @@ export class AppComponent implements OnInit {
             data => {
               this.userData = data;
               console.log("*****************")
+              localStorage.setItem('userData', JSON.stringify(data))
               // console.log(this.userData)
               // alert(this.userData)
             }, (err) => {
@@ -152,12 +141,21 @@ export class AppComponent implements OnInit {
         }
 
       }
-      else{
+      else {
         this.authenticated = false;
+
+        let tokenSign: any = {};
+        tokenSign.authenticated = this.authenticated;
+
+        localStorage.setItem('tokenSign', JSON.stringify(tokenSign))
+        console.log(localStorage.getItem("tokenSign"));
       }
+
+      console.log(this.authenticated)
 
 
       this.spinner.hide();
     }, 5000);
   }
+
 }
